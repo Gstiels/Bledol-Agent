@@ -57,7 +57,7 @@ def as_jpg(url):
     return f"{base}{slash}{name}.jpg"
 
 
-def make_new_drafts(state, limit=3):
+def make_new_drafts(state, limit=1):
     made = 0
     for photo in list_photos():
         public_id = photo["public_id"]
@@ -65,7 +65,7 @@ def make_new_drafts(state, limit=3):
         name = photo_name(photo)
 
         # Ignore the sample images that come with every Cloudinary account
-        if public_id == "sample" or public_id.startswith("samples/"):
+        if public_id == "sample" or public_id.startswith(("samples/", "cld-sample")):
             continue
 
         if public_id in state["seen"]:
