@@ -1,0 +1,45 @@
+name: Bledol agent
+
+on:
+  schedule:
+    - cron: "0 6,10,14,18 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: bledol-agent
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install libraries
+        run: pip install -r requirements.txt
+
+      - name: Run agent
+        env:
+          PAGE_ID: ${{ secrets.PAGE_ID }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          PAGE_TOKEN: ${{ secrets.PAGE_TOKEN }}
+          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python agent.py
+
+      - name: Save state
+        run: |
+          git config user.name "bledol-agent"
+          git config user.email "bledol-agent@users.noreply.github.com"
+          git add state/state.json
+          git diff --staged --quiet || (git commit -m "Update agent state" && git push)
