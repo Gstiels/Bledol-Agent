@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 import publisher
 import store
+import telegram_bot
 from captions import write_posts
 
 load_dotenv()
@@ -108,6 +109,9 @@ def make_new_drafts(state, limit=1):
 
 
 def publish(state, draft):
+    if os.getenv("DRY_RUN"):
+        print("DRY RUN: nothing was posted.")
+        return
     if not draft.get("facebook_post_id"):
         try:
             draft["facebook_post_id"] = publisher.post_to_facebook(
@@ -156,9 +160,22 @@ def review_in_console(state):
 
 def main():
     state = store.load()
+    use_telegram = telegram_bot.configured()
+
+    if use_telegram:
+        telegram_bot.process_updates(state, publish)  # act on taps since last run
+
     made = make_new_drafts(state)
     store.save(state)
     print(f"{made} new draft(s) created.")
+
+    if use_telegram:
+        telegram_bot.send_pending(state)
+        wait = int(os.getenv("TELEGRAM_WAIT_MINUTES", "0")) * 60
+        if wait:
+            telegram_bot.process_updates(state, publish, wait)
+        store.save(state)
+
     if "--console" in sys.argv:
         review_in_console(state)
 
