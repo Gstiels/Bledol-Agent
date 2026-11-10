@@ -12,7 +12,8 @@
     "cld-sample",
     "cld-sample-5",
     "cld-sample-4",
-    "WORK5"
+    "WORK5",
+    "WORK3"
   ],
   "fingerprints": [
     "57334-1000x1000",
@@ -26,7 +27,8 @@
     "818600-1870x1250",
     "91282-715x715",
     "86909-715x715",
-    "89290-715x715"
+    "89290-715x715",
+    "103497-715x715"
   ],
   "drafts": {
     "20261106-121440-1": {
@@ -78,8 +80,18 @@
       "instagram": "Bledol Integrated Services LTD provides professional BIM construction drawings and innovative building materials in Abuja, Nigeria. Message us for a quote or visit bledol.com.",
       "facebook": "Bledol Integrated Services LTD delivers BIM construction drawings and innovative building materials in Abuja, Nigeria, including epoxy flooring, countertops, foam concrete, solar glass, and aluminum honeycomb panels. Message us for a quote or visit bledol.com.",
       "sent": true
+    },
+    "20261110-205932-1": {
+      "status": "published",
+      "photo_name": "epoxy-floor-warehouse-abuja",
+      "image_url": "https://res.cloudinary.com/zbo7zgtl/image/upload/v1793030110/WORK3.jpg",
+      "instagram": "Epoxy flooring installation completed at a warehouse in Abuja by Bledol Integrated Services LTD. We provide durable, high-performance flooring solutions tailored to industrial and commercial requirements. Contact our Abuja office for professional project execution and innovative building materials.\n\nMessage us for a quote or visit bledol.com.\n\n#Bledol #EpoxyFlooring #IndustrialFlooring #AbujaConstruction #WarehouseFlooring",
+      "facebook": "Bledol Integrated Services LTD delivered this professional epoxy flooring installation for a warehouse in Abuja. Designed for industrial durability and heavy-duty usage, our epoxy flooring solutions provide a seamless, resilient surface that meets demanding commercial standards. \n\nIn addition to advanced flooring systems, Bledol offers BIM construction drawings, clash detection, MEP coordination, foam concrete, solar glass panels, and aluminum honeycomb wall panels for projects across Abuja and beyond. \n\nMessage us for a quote or visit bledol.com.",
+      "sent": true,
+      "facebook_post_id": "740717639135384_122150463483051590",
+      "instagram_media_id": "18061812098557767"
     }
   },
-  "tg_offset": 241703177,
+  "tg_offset": 241703180,
   "editing": "20261106-122603-1"
 }
